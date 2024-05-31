@@ -13,5 +13,9 @@
     "tsup": "^8.0.2",
     "tsx": "^4.11.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.2",
+    "hono": "^4.4.2"
   }
 }
