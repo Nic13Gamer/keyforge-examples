@@ -1,0 +1,17 @@
+{
+  "name": "hono-api",
+  "version": "1.0.0",
+  "description": "A Hono API using the Keyforge Node.js SDK",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src/server.ts --format cjs,esm --dts",
+    "start": "node dist/server.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.13.0",
+    "tsup": "^8.0.2",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
+  }
+}
