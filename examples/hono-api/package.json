@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.11.2",
-    "hono": "^4.4.2"
+    "dotenv": "^16.4.5",
+    "hono": "^4.4.2",
+    "keyforge-js": "^0.1.0"
   }
 }
