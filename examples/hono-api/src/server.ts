@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
-import { Keyforge } from 'keyforge-js';
+import { Keyforge, KeyforgeError } from 'keyforge-js';
 
 const API_KEY = process.env.KEYFORGE_API_KEY!;
 const PRODUCT_ID = process.env.KEYFORGE_PRODUCT_ID!;
@@ -34,6 +34,37 @@ app.get('/download', async (c) => {
   return c.text(
     "Thank you for buying our product! Here's the download link: <YOUR_DOWNLOAD_LINK>."
   );
+});
+
+app.post('/activate', async (c) => {
+  const data = (await c.req.json()) as Record<string, string>;
+  const { licenseKey, deviceIdentifier, deviceName } = data;
+
+  if (!licenseKey || !deviceIdentifier || !deviceName) {
+    c.status(400);
+
+    return c.text(
+      '"licenseKey", "deviceIdentifier" and "deviceName" are required.'
+    );
+  }
+
+  try {
+    const license = await keyforge.licenses.activate(licenseKey, {
+      productId: PRODUCT_ID,
+      device: {
+        identifier: deviceIdentifier,
+        name: deviceName,
+      },
+    });
+
+    return c.json({ licenseKey: license.key });
+  } catch (error) {
+    if (error instanceof KeyforgeError) {
+      c.status(400);
+
+      return c.text(error.message);
+    }
+  }
 });
 
 serve(
