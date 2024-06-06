@@ -9,7 +9,7 @@
     "start": "node dist/server.js"
   },
   "devDependencies": {
-    "@types/node": "^20.14.1",
+    "@types/node": "^20.14.2",
     "tsup": "^8.1.0",
     "tsx": "^4.11.2",
     "typescript": "^5.4.5"
@@ -18,6 +18,6 @@
     "@hono/node-server": "^1.11.2",
     "dotenv": "^16.4.5",
     "hono": "^4.4.3",
-    "keyforge-js": "^0.2.1"
+    "keyforge-js": "^0.3.0"
   }
 }
