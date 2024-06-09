@@ -1,5 +1,5 @@
 {
-  "name": "electron-app",
+  "name": "keyforge-example-electron-app",
   "version": "1.0.0",
   "description": "An Electron app protected with licenses by Keyforge",
   "main": "main.js",
@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "electron": "^30.0.9"
+  },
+  "dependencies": {
+    "node-machine-id": "^1.1.12"
   }
 }
