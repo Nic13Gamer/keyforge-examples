@@ -4,10 +4,8 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-// const KEYFORGE_BASE_URL = 'https://keyforge.dev';
-const KEYFORGE_BASE_URL = 'http://localhost:3000';
-// const KEYFORGE_PRODUCT_ID = 'YOUR_PRODUCT_ID';
-const KEYFORGE_PRODUCT_ID = 'qhd35180lia4s4h5a277kpbr';
+const KEYFORGE_BASE_URL = 'https://keyforge.dev';
+const KEYFORGE_PRODUCT_ID = 'YOUR_PRODUCT_ID';
 
 const createWindow = async () => {
   console.log('Validating license...');
