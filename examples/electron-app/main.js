@@ -34,6 +34,9 @@ const createWindow = async () => {
       resizable: false,
       webPreferences: {
         preload: path.join(__dirname, '/src/activate/preload.js'),
+        defaultFontFamily: {
+          standard: 'Segoe UI',
+        },
       },
     });
 
@@ -42,6 +45,11 @@ const createWindow = async () => {
     const win = new BrowserWindow({
       width: 800,
       height: 600,
+      webPreferences: {
+        defaultFontFamily: {
+          standard: 'Segoe UI',
+        },
+      },
     });
 
     win.loadFile('./src/index.html');
@@ -66,7 +74,7 @@ app.on('window-all-closed', () => {
 
 async function validateLicense() {
   const deviceIdentifier = await machineId();
-  
+
   let licenseKey;
 
   try {
