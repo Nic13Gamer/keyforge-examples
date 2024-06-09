@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Keyforge Electron Example</title>
+  </head>
+  <body>
+    <h2>Activate Electron Example</h2>
+
+    <form id="activate-form">
+      <label for="license-key">License key: </label>
+      <input
+        type="text"
+        id="license-key"
+        name="licenseKey"
+        placeholder="Your license key"
+        required
+      />
+
+      <button type="submit">Activate</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

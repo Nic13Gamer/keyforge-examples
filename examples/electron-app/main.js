@@ -1,34 +1,55 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { machineId } = require('node-machine-id');
 const fs = require('fs');
 const os = require('os');
+const path = require('path');
 
 // const KEYFORGE_BASE_URL = 'https://keyforge.dev';
 const KEYFORGE_BASE_URL = 'http://localhost:3000';
-const KEYFORGE_PRODUCT_ID = 'YOUR_PRODUCT_ID';
+// const KEYFORGE_PRODUCT_ID = 'YOUR_PRODUCT_ID';
+const KEYFORGE_PRODUCT_ID = 'qhd35180lia4s4h5a277kpbr';
 
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-  });
+const createWindow = async () => {
+  console.log('Validating license...');
 
-  win.loadFile('./src/index.html');
-};
-
-app.whenReady().then(async () => {
   const isValid = await validateLicense();
 
   if (!isValid) {
+    ipcMain.handle('activate-license', async (event, licenseKey) => {
+      const { success, message } = await activateLicense(licenseKey);
+
+      if (!success) {
+        console.error(message);
+
+        return message;
+      }
+
+      app.relaunch();
+      app.quit();
+    });
+
     const activateWindow = new BrowserWindow({
       width: 400,
       height: 300,
+      resizable: false,
+      webPreferences: {
+        preload: path.join(__dirname, '/src/activate/preload.js'),
+      },
     });
 
-    activateWindow.loadFile('./src/activate.html');
+    activateWindow.loadFile('./src/activate/index.html');
   } else {
-    createWindow();
+    const win = new BrowserWindow({
+      width: 800,
+      height: 600,
+    });
+
+    win.loadFile('./src/index.html');
   }
+};
+
+app.whenReady().then(async () => {
+  createWindow();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -44,7 +65,9 @@ app.on('window-all-closed', () => {
 });
 
 async function validateLicense() {
-  let licenseKey, deviceIdentifier;
+  const deviceIdentifier = await machineId();
+  
+  let licenseKey;
 
   try {
     const licenseData = fs.readFileSync(
@@ -55,12 +78,11 @@ async function validateLicense() {
     const payload = JSON.parse(licenseData);
 
     licenseKey = payload.licenseKey;
-    deviceIdentifier = payload.deviceIdentifier;
   } catch (error) {
     return false;
   }
 
-  if (!licenseKey || !deviceIdentifier) {
+  if (!licenseKey) {
     return false;
   }
 
@@ -105,14 +127,22 @@ async function activateLicense(licenseKey) {
       }
     );
 
-    fs.writeFileSync(
-      `${app.getPath('userData')}/license.json`,
-      JSON.stringify({
-        licenseKey,
-        deviceIdentifier,
-      })
-    );
+    if (response.ok) {
+      fs.writeFileSync(
+        `${app.getPath('userData')}/license.json`,
+        JSON.stringify({
+          licenseKey,
+          deviceIdentifier,
+        })
+      );
+
+      return { success: true, message: 'License activated successfully.' };
+    } else {
+      const data = await response.json();
+
+      return { success: false, message: data.error.message };
+    }
   } catch (error) {
-    console.error(error);
+    return { success: false, message: error.message };
   }
 }
