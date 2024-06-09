@@ -44,7 +44,7 @@ app.post('/activate', async (c) => {
     c.status(400);
 
     return c.text(
-      '"licenseKey", "deviceIdentifier" and "deviceName" are required.'
+      '"licenseKey", "deviceIdentifier" and "deviceName" body parameters are required.'
     );
   }
 
@@ -65,6 +65,26 @@ app.post('/activate', async (c) => {
       return c.text(error.message);
     }
   }
+});
+
+app.post('/validate', async (c) => {
+  const data = (await c.req.json()) as Record<string, string>;
+  const { licenseKey, deviceIdentifier } = data;
+
+  if (!licenseKey || !deviceIdentifier) {
+    c.status(400);
+
+    return c.text(
+      '"licenseKey" and "deviceIdentifier" body parameters are required.'
+    );
+  }
+
+  const { isValid } = await keyforge.licenses.validate(licenseKey, {
+    productId: PRODUCT_ID,
+    deviceIdentifier,
+  });
+
+  return c.json({ isValid });
 });
 
 serve(
