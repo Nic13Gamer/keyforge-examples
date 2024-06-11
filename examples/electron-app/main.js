@@ -138,7 +138,6 @@ async function activateLicense(licenseKey) {
         `${app.getPath('userData')}/license.json`,
         JSON.stringify({
           licenseKey,
-          deviceIdentifier,
         })
       );
 
