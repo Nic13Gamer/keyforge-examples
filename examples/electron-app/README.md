@@ -1,4 +1,4 @@
-# Electron application
+# Electron Application
 
 Simple Electron app, protected with licenses by [Keyforge](https://keyforge.dev). No backend is required, licenses are validated and activated using the Keyforge public REST API.
 
@@ -14,7 +14,7 @@ npm install
 
 Set your Keyforge product ID in `main.js`:
 
-```javascript
+```js
 const KEYFORGE_PRODUCT_ID = 'p_123456';
 ```
 
