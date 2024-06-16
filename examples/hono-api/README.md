@@ -10,7 +10,7 @@ Install dependencies:
 npm install
 ```
 
-Set environment variables in `.env`:
+Create a `.env` file and set environment variables:
 
 ```bash
 KEYFORGE_API_KEY=sk_...
