@@ -1,6 +1,6 @@
 # Keyforge examples
 
-Examples using Keyforge and the Node.js SDK.
+Examples using Keyforge, the Node.js SDK, and the public REST API.
 
 Documentation is available [here](https://docs.keyforge.dev).
 
