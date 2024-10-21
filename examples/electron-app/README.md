@@ -1,8 +1,8 @@
 # Electron Application
 
-Simple Electron app, protected with licenses by [Keyforge](https://keyforge.dev). No backend is required, licenses are validated and activated using the Keyforge public REST API.
+Simple desktop app built with Electron, protected with licenses by [Keyforge](https://keyforge.dev). No backend is required, licenses are validated and activated using the Keyforge public REST API.
 
-**This example requires an internet connection to validate and activate licenses. It does not work offline.**
+**This example requires an internet connection on startup to validate and activate licenses.**
 
 ## How to use
 
