@@ -37,8 +37,8 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
       keyforge-js:
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^1.1.3
+        version: 1.1.3
     devDependencies:
       '@types/node':
         specifier: ^20.14.2
@@ -553,6 +553,7 @@ packages:
 
   boolean@3.2.0:
     resolution: {integrity: sha512-d0II/GO9uf9lfUHH2BQsjxzRJZBdsjgsBiW4BvhWk/3qoKwQFjIDVN19PfX8F2D/r9PCMTtLWjYVCFrpeYUzsw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   brace-expansion@2.0.1:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
@@ -856,8 +857,8 @@ packages:
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
 
-  keyforge-js@0.3.0:
-    resolution: {integrity: sha512-hK/E1CAF7CUNPdJMOJshzp4xiW0aJsu1BypjZiCs7sTnoBDRdxjd7CvGdBLNNMmVGm45Tu9Zlt+c71xvFGWvRg==}
+  keyforge-js@1.1.3:
+    resolution: {integrity: sha512-H1KlR19DWSfdaGPuP1UG+W41nbzVbxYTUrDdjPRRzmInvtZwUMOsA/6CeZ5kfWpYCSZrHPhlOOdPVNZbldh8eQ==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -2007,7 +2008,7 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
-  keyforge-js@0.3.0: {}
+  keyforge-js@1.1.3: {}
 
   keyv@4.5.4:
     dependencies:
