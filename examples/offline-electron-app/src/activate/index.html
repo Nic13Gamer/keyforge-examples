@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Keyforge Offline Electron Example</title>
+  </head>
+  <body>
+    <h1>Not activated!</h1>
+    <h3>Use your license key to activate this app.</h3>
+
+    <form id="activate-form">
+      <label for="license-key">License key: </label>
+      <input
+        type="text"
+        id="license-key"
+        name="licenseKey"
+        placeholder="Your license key"
+        required
+      />
+
+      <button type="submit">Activate</button>
+    </form>
+
+    <b><p id="message"></p></b>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>
