@@ -31,4 +31,4 @@ When you run the app, it will ask you to activate it with a license key. After a
 
 An internet connection is only needed to activate the license and for occasional token refreshes.
 
-This app makes use of the Keyforge public REST API. You can find more information about it [here](https://docs.keyforge.dev/api-reference/public).
+This app makes use of the Keyforge public REST API. You can find more information about it [here](https://docs.keyforge.dev/api-reference/public/public-validate-license).
